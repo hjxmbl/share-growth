@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <meta http-equiv="X-UA-Compatible" content="ie = edge"/>
+ <title>html模板</title>
+</head>
+<body>
+<a onclick="change('/home')">首页</a>
+<a onclick="change('/list')">列表页</a>
+<div id="container"></div>
+<script>
+  function change(url) {
+    history.pushState({},null, url);
+    container.innerHTML = url
+  }
+  // historyapi 只能通过popstate方法监听 浏览器的前进和后退
+  window.addEventListener('popstate',function () {
+    container.innerHTML = window.location.pathname
+  });
+</script>
+</body>
+</html>
